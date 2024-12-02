@@ -1,0 +1,229 @@
+/* ------------------ */
+
+/* Layout */
+body {
+  padding: 1;
+  margin: 1;
+  text-align: center;
+  color: white;
+}
+
+/* definimos en el body el grid-template-areas inicial que aplicara en mobile first   nav  barra de naveg🇦🇨ion aside seccion del filtro   main grilla de productos con paginador   footer pie de pagina   */
+body {
+  display: grid;
+  height: 100vh;
+  grid-template-columns: 100%;
+  grid-template-rows: 1fr 1fr 10fr 1fr;
+  grid-template-areas:
+    "nav"
+    "aside"
+    "main"
+    "footer";
+}
+
+nav {
+  grid-area: nav; /* asociacion con el area definida en el template */
+  background: #01579b;
+  display: flex;
+  justify-content: end;
+  align-items: center;
+}
+
+nav ul {
+  display: none;
+}
+
+main {
+  grid-area: main; /* asociacion con el area definida en el template */
+
+}
+
+
+aside {
+  grid-area: aside; /* asociacion con el area definida en el template */
+  background-color: #e1e2e1;
+  color: black;
+  padding-top: 5%;
+}
+
+select {
+  margin:auto !important;
+}
+
+
+
+footer {
+  grid-area: footer; /* asociacion con el area definida en el template */
+  background-color: #002f6c;
+  padding:3%;
+}
+
+#my-footer {
+  margin-bottom: 3%;
+}
+
+/* estilos para las tarjetas */
+.card {
+  box-shadow: 1px 1px 5px 1px #e1e2e1;
+}
+
+
+
+/* definimos la media query para que a partir de 576px cambie el el grid-template del body */
+@media screen and (min-width: 576px) {
+  body {
+    grid-template-columns: 20% 80%;
+    grid-template-rows: 1fr 10fr 1fr;
+    grid-template-areas:
+      "nav nav"
+      "aside main "
+      "footer footer";
+  }
+
+  #icono_hamberger {
+    display: none;
+  }
+
+  nav ul {
+    display: flex;
+    justify-content: end;
+    padding: 0;
+    margin-left: 5%;
+    margin-right: 0%;
+    width: 100%;
+  }
+
+  nav > ul > li {
+    margin-right: 2%;
+  }
+
+  aside {
+    padding-top: 5%;
+  }
+}
+
+/* definimos la media query para que a partir de 992px cambie el el grid-template del body */
+@media screen and (min-width: 992px) {
+  body {
+    grid-template-columns: 15% 85% ;
+    grid-template-areas:
+      "nav aside "
+      "nav main "
+      "footer main ";
+  }
+
+  #icono_hamberger {
+    display: none;
+  }
+
+  nav ul {
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    margin-left: 5%;
+    margin-right: 0%;
+    width: 100%;
+  }
+
+  nav > ul > li {
+    margin-right: 2%;
+  }
+
+  aside {
+    padding-top: 1.5%;
+    padding-bottom: 1.5%;
+  }
+
+  #my-footer {
+    padding-top: 3%;
+  }
+
+}
+
+/* ---------------------------------------------------------------- */
+/* Components vista mobile*/
+
+nav ul {
+  list-style-type: none;
+}
+
+
+.card button {
+  background: #01579b;
+}
+
+/* vista en mobile first una sola columna de gatos */
+.gatos {
+  overflow-y: scroll;
+  height: 65vh;
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  
+
+}
+
+.card {
+  margin-top: 3px;
+  margin-bottom: 3px;
+}
+
+.card-img {
+  padding-bottom: 0px;
+  padding-top: 4px;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+.w-100 {
+  width: 100%;
+}
+
+.card-text {
+  margin:0;
+}
+
+.btn {
+  color: white !important;
+  margin-top: 5%;
+  margin-bottom: 5%;
+}
+
+
+.d-flex {
+  display:flex;
+  margin-top: 5%;
+  justify-content: center;
+}
+
+.pagination {
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+
+.page-item {
+  margin-right: 20%;
+}
+
+
+/* Otras Medias aplicadas sobre la clase gatos Vistas No Mobile */
+
+/* a partir de 576px muestra 2 columnas y cambia el heigth */
+@media screen and (min-width: 576px) {
+  .gatos {
+    height: 70vh;
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* a partir de 992px muestra 4 columnas y cambia el heigth, ajuste en el nav */
+@media screen and (min-width: 992px) {
+  .gatos {
+    height: 75vh;
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  nav ul li {
+    margin-top: 10px;
+  }
+}
